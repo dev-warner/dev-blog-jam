@@ -1,0 +1,11 @@
+@import '../../core/main.scss';
+
+.tag-list {
+  display: flex;
+  flex-direction: row;
+  margin-right: $padding-s;
+
+  &__tag {
+    margin-right: $padding-s / 2;
+  }
+}

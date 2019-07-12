@@ -1,0 +1,10 @@
+@import '../../core/main.scss';
+
+
+.post {
+  &__container {
+    padding: $padding-m $padding-s;
+    max-width: $content_width;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../core/main.scss';
+
+.navigation {
+  height: '40px';
+  background: $blue url('/static/images/mast-amplogo.png') no-repeat bottom right;
+
+  &__brand {
+    background-image: url('/static/images/mast-logo-x2.png');
+    background-size: 240px 40px;
+    height: 40px;
+    width: 240px;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../core/main.scss';
+
+.author-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $padding-s;
+
+  &__name {
+    line-height: 40px;
+    margin-left: $padding-s / 2;
+  }
+}

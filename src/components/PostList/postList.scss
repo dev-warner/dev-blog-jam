@@ -1,0 +1,27 @@
+@import '../../core/main.scss';
+
+.post-list {
+
+  &__container {
+    max-width: $content-width;
+    margin: 0 auto;
+    padding: $padding_m $padding_s;
+  }
+
+  &__post-item {
+    padding: 0 0 $padding_s 0;
+    margin: 0 0 $padding_s 0;
+    border-bottom: 1px $grey solid;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: row;
+    font-size: $font-small;
+  }
+
+  &__reading {
+    line-height: $padding_m;
+    font-weight: $font-bold;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../core/main.scss';
+
+body {
+  margin: 0;
+  max-width: 100%;
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $primary;
+  text-decoration: underline;
+  transition: $transition-default;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

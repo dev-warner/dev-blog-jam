@@ -1,0 +1,32 @@
+@import '../../core/main.scss';
+
+.hero {
+  &__container {
+    width: 100%;
+    padding: $padding_m $padding_s;
+    background-color: $dark_blue;
+    color: $white;
+  }
+  &__content-container {
+    max-width: $content_width;
+    margin: 0 auto;
+  }
+  &__title {
+    font-size: 1.3em;
+  }
+  &__image {
+    width: 100%;
+    padding: $padding_s;
+  }
+
+  @media (min-width: $tablet) {
+    &__content-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__text-container, &__image {
+      max-width: 45%;
+    }
+  }
+}
