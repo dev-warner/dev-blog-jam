@@ -1,8 +1,11 @@
 {
+  "version": "0.0.0",
+  "name": "dev-blog-jam",
   "scripts": {
     "dev": "next ./src",
     "build": "next build ./src",
-    "start": "next start ./src"
+    "start": "next start ./src",
+    "ci_build_deploy": "next build ./src && next export ./src"
   },
   "dependencies": {
     "@material-ui/core": "^4.2.0",
