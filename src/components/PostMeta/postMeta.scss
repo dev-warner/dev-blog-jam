@@ -1,0 +1,14 @@
+@import '../../core/main.scss';
+
+.post-meta__group {
+    display: flex;
+    flex-direction: row;
+    font-size: $font-small;
+    justify-content: space-between;
+}
+.post-meta {
+    &__reading {
+        line-height: $padding_m;
+        font-weight: $font-bold;
+    }
+}

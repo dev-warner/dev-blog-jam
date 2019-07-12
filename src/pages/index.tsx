@@ -14,7 +14,9 @@ type HomeProps = Schema<{
 
 const Home: NextPage<HomeProps> = ({ hero, posts }) => {
   return (
-    <Layout>
+    <Layout
+      title={ hero.title }
+      description={ hero.subheading }>
       <Hero {...hero}/>
       <PostList posts={posts}/>
     </Layout>

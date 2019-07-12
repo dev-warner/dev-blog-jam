@@ -1,21 +1,44 @@
 import * as React from 'react';
-import { TagList } from '../TagList/TagList';
-
 import readingTime from 'reading-time';
 
+import { TagList } from '../TagList/TagList';
+import { AuthorCard } from '../AuthorCard/AuthorCard';
+import { image } from '../../services/dc-connector';
+
+import './postMeta.scss';
+
 const calculateReadingTime = body => {
-  const { text } = readingTime(body);
+    const { text } = readingTime(body);
 
-  return text;
-}
+    return text;
+};
 
+export const PostMeta = ({ tags, body, author }) => {
+    const { profilePic } = author;
 
-export const PostMeta = ({ tags, body }) => {
-  return (
-    <section className='post-list__meta'>
-      { tags && <TagList tags={tags} /> }
+    return (
+        <section className="post-meta">
+            <div className="post-meta__group">
+                <AuthorCard
+                    name={author.name}
+                    image={createProfilePicture(profilePic)}
+                    info={author.info}
+                />
+                <div className="post-meta__reading">{calculateReadingTime(body)}</div>
+            </div>
 
-      <div className='post-list__reading'>{ calculateReadingTime(body) }</div>
-    </section>
-  )
-}
+            <div className="post-meta__tags">
+                {tags && <TagList tags={tags} />}
+            </div>
+        </section>
+    );
+};
+
+const createProfilePicture = profilePic => {
+    return image(profilePic)
+        .url()
+        .width(40)
+        .height(40)
+        .seoFileName(profilePic.name)
+        .build();
+};

@@ -15,13 +15,11 @@ export const PostList: React.SFC<PostListProps> = ({
     return (
         <section className="post-list__container">
             {posts.map(({ title, excert, tags, slug, author }, index) => {
-                const { profilePic } = author;
 
                 return (
                     <article className="post-list__post-item" key={index}>
                         <h3>{title}</h3>
-                        <AuthorCard name={author.name} image={createProfilePicture(profilePic)} />
-                        <PostMeta body={excert} tags={tags} />
+                        <PostMeta body={excert} tags={tags} author={author} />
                         <p>{excert}</p>
                         <ButtonLink
                             prefetch={true}
@@ -52,12 +50,3 @@ export type AuthorType = Schema<{
     twitter: string;
     profilePic: Media;
 }>;
-
-const createProfilePicture = profilePic => {
-    return image(profilePic)
-        .url()
-        .width(40)
-        .height(40)
-        .seoFileName(profilePic.name)
-        .build();
-}

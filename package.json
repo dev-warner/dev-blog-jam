@@ -7,22 +7,23 @@
     "start": "next start ./src",
     "ci_build_deploy": "next build ./src && next export ./src"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@material-ui/core": "^4.2.0",
+    "@svgr/webpack": "^4.3.1",
     "@types/next": "7.0.6",
     "@types/react": "^16.8.23",
+    "@types/styled-jsx": "^2.2.8",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "dc-delivery-sdk-js": "^0.2.0",
-    "node-sass": "^4.12.0",
-    "reading-time": "^1.2.0"
-  },
-  "devDependencies": {
-    "@svgr/webpack": "^4.3.1",
-    "@types/styled-jsx": "^2.2.8",
     "next": "^9.0.0",
+    "next-offline": "^4.0.2",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "reading-time": "^1.2.0",
+    "showdown": "^1.9.0",
     "typescript": "^3.5.3"
   }
 }

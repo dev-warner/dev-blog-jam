@@ -9,6 +9,8 @@ import './default.scss';
 
 interface LayoutProps {
     children: JSX.Element[];
+    title: string;
+    description: string;
 }
 
 const theme = createMuiTheme({
@@ -18,15 +20,19 @@ const theme = createMuiTheme({
     }
 })
 
-export default ({ children }: LayoutProps) => {
+export default ({ children, title, description }: LayoutProps) => {
     return (
         <>
             <Head>
+                <meta charSet="utf-8" />
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                <title>{ title }</title>
+                <meta name="description" content={ description }/>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
-                <meta charSet="utf-8" />
+
                 <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,600&display=swap" rel="stylesheet"></link>
             </Head>
             <Header />

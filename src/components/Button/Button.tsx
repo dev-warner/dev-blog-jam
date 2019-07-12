@@ -9,6 +9,7 @@ type ButtonType = {
     variant?: 'text' | 'outlined' | 'contained';
     label: string;
     prefetch?: boolean;
+    className?: string;
 };
 
 export const ButtonLink: React.SFC<ButtonType> = ({
@@ -16,7 +17,8 @@ export const ButtonLink: React.SFC<ButtonType> = ({
     color = 'primary',
     variant = 'outlined',
     label = '',
-    prefetch = false
+    prefetch = false,
+    className
 }) => (
     <Link href={href} prefetch={prefetch}>
         <Button variant={variant} color={color}>

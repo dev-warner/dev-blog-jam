@@ -13,15 +13,4 @@
     margin: 0 0 $padding_s 0;
     border-bottom: 1px $grey solid;
   }
-
-  &__meta {
-    display: flex;
-    flex-direction: row;
-    font-size: $font-small;
-  }
-
-  &__reading {
-    line-height: $padding_m;
-    font-weight: $font-bold;
-  }
 }

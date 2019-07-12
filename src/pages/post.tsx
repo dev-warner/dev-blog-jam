@@ -1,4 +1,6 @@
 import Layout from '../layouts/default';
+import * as showdown from 'showdown';
+
 import { NextPage } from 'next';
 import { Schema } from '../next-env';
 import { client, image } from '../services/dc-connector';
@@ -12,6 +14,7 @@ export type PostType = Schema<{
     body: string;
     authors: AuthorType[];
     tags: string[];
+    descriptionSEO: string;
     featuredImage: {
         path: string;
         alt: string;
@@ -24,10 +27,12 @@ export type PostReferenceType = Schema<{
 }>;
 
 const Post: NextPage<PostType> = (post) => {
-    const { title, featuredImage } = post;
+    const { title, featuredImage, descriptionSEO } = post;
 
   return (
-    <Layout>
+    <Layout
+      title={ title }
+      description={ descriptionSEO }>
         <Hero {...{ title, featuredImage }}/>
         <PostContent {...post}/>
     </Layout>
@@ -36,7 +41,9 @@ const Post: NextPage<PostType> = (post) => {
 
 Post.getInitialProps = async ({ query }) => {
     const { id } = query;
-    const { featuredImage, ...props } = (await client.getContentItem(id as string)).toJSON();
+    const converter = new showdown.Converter();
+    const data = (await client.getContentItem(id as string)).toJSON();
+    const { featuredImage, body } = data;
 
     const { seo, alt } = featuredImage;
 
@@ -47,12 +54,15 @@ Post.getInitialProps = async ({ query }) => {
             .build()
     );
 
-    Object.assign(featuredImage, {
-        path,
-        alt: featuredImage.alt,
+    Object.assign(data, {
+        body: converter.makeHtml(body),
+        featuredImage: {
+            path,
+            alt: featuredImage.alt,
+        }
     })
 
-    return { featuredImage, ...props } as PostType;
+    return data as PostType;
 }
 
 
