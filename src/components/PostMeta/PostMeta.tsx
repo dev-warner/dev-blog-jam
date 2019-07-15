@@ -1,13 +1,13 @@
-import * as React from 'react';
-import readingTime from 'reading-time';
+import * as React from "react";
+import readingTime from "reading-time";
 
-import { TagList } from '../TagList/TagList';
-import { AuthorCard } from '../AuthorCard/AuthorCard';
-import { image } from '../../services/dc-connector';
+import { image } from "../../services/dc-connector";
+import { AuthorCard } from "../AuthorCard/AuthorCard";
+import { TagList } from "../TagList/TagList";
 
-import './postMeta.scss';
+import "./postMeta.scss";
 
-const calculateReadingTime = body => {
+const calculateReadingTime = (body) => {
     const { text } = readingTime(body);
 
     return text;
@@ -34,7 +34,7 @@ export const PostMeta = ({ tags, body, author }) => {
     );
 };
 
-const createProfilePicture = profilePic => {
+const createProfilePicture = (profilePic) => {
     return image(profilePic)
         .url()
         .width(40)

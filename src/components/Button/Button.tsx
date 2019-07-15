@@ -1,28 +1,26 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Link from 'next/link';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import Link from "next/link";
 
 type ButtonType = {
     href: string;
-    color?: 'inherit' | 'primary' | 'secondary' | 'default';
-    variant?: 'text' | 'outlined' | 'contained';
+    color?: "inherit" | "primary" | "secondary" | "default";
+    variant?: "text" | "outlined" | "contained";
     label: string;
-    prefetch?: boolean;
     className?: string;
 };
 
 export const ButtonLink: React.SFC<ButtonType> = ({
-    href = '/',
-    color = 'primary',
-    variant = 'outlined',
-    label = '',
-    prefetch = false,
-    className
+    href = "/",
+    color = "primary",
+    variant = "outlined",
+    label = "",
+    className,
 }) => (
-    <Link href={href} prefetch={prefetch}>
+    <Link href={href}>
         <Button variant={variant} color={color}>
-            {label}
+            <a rel="noopener">{label}</a>
         </Button>
     </Link>
 );

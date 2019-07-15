@@ -7,16 +7,15 @@ export type Schema<T = {}, K = {}> = T & {
 };
 
 export type Media = {
-  endpoint: string
-  defaultHost: string
-  id: string
-  name: string
-  mediatype: 'image' | 'video',
+  endpoint: string;
+  defaultHost: string;
+  id: string;
+  name: string;
+  mediatype: "image" | "video";
   _meta: Meta;
-}
+};
 
 type Meta<T = {}> = {
   schema: string;
   deliveryId?: string;
 };
-

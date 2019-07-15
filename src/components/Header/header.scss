@@ -5,8 +5,11 @@
   background: $blue url('/static/images/mast-amplogo.png') no-repeat bottom right;
 
   &__brand {
-    background-image: url('/static/images/mast-logo-x2.png');
-    background-size: 240px 40px;
+    display: block;
+    background-image: url('/static/images/amplience-logo-hidef.png');
+    background-size: 143px 35px;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 40px;
     width: 240px;
   }

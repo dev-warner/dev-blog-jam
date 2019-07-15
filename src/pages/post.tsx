@@ -1,25 +1,25 @@
-import Layout from '../layouts/default';
-import * as showdown from 'showdown';
+import * as showdown from "showdown";
+import Layout from "../layouts/default";
 
-import { NextPage } from 'next';
-import { Schema } from '../next-env';
-import { client, image } from '../services/dc-connector';
-import { AuthorType } from '../components/PostList/PostList';
-import { Hero } from '../components/Hero/Hero';
-import { PostContent } from '../components/PostContent/PostContent';
-
+import { NextPage } from "next";
+import { Schema } from "../next-env";
+import { Hero } from "../components/Hero/Hero";
+import { client, image } from "../services/dc-connector";
+import { PostContent } from "../components/PostContent/PostContent";
+import { AuthorType, PostPreviewType } from "../components/PostList/PostList";
 
 export type PostType = Schema<{
     title: string;
     body: string;
     authors: AuthorType[];
     tags: string[];
+    relatedPosts: PostPreviewType[];
     descriptionSEO: string;
     featuredImage: {
         path: string;
         alt: string;
     }
-}>
+}>;
 
 export type PostReferenceType = Schema<{
     id: string;
@@ -29,7 +29,7 @@ export type PostReferenceType = Schema<{
 const Post: NextPage<PostType> = (post) => {
     const { title, featuredImage, descriptionSEO } = post;
 
-  return (
+    return (
     <Layout
       title={ title }
       description={ descriptionSEO }>
@@ -37,7 +37,7 @@ const Post: NextPage<PostType> = (post) => {
         <PostContent {...post}/>
     </Layout>
   );
-}
+};
 
 Post.getInitialProps = async ({ query }) => {
     const { id } = query;
@@ -59,11 +59,10 @@ Post.getInitialProps = async ({ query }) => {
         featuredImage: {
             path,
             alt: featuredImage.alt,
-        }
-    })
+        },
+    });
 
     return data as PostType;
-}
-
+};
 
 export default Post;

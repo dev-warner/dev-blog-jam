@@ -1,13 +1,12 @@
-import { ContentClient, ContentClientConfig, Image } from 'dc-delivery-sdk-js'
+import { ContentClient, ContentClientConfig, Image } from "dc-delivery-sdk-js";
 
 export class Client {
-
   private config: ContentClientConfig;
   private contentClient: ContentClient;
 
   constructor(config: ContentClientConfig) {
     this.config = config;
-    this.contentClient = new ContentClient(config)
+    this.contentClient = new ContentClient(config);
   }
 
   get client() {
@@ -19,7 +18,7 @@ export class Client {
   }
 }
 
-const blogClient = new Client({ account: 'ampeng' })
+const blogClient = new Client({ account: "ampeng" });
 
 export const client = blogClient.client;
-export const image = body => blogClient.image(body);
+export const image = (body) => blogClient.image(body);

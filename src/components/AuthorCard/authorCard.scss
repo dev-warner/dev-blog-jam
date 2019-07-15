@@ -2,8 +2,14 @@
 
 .author-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: $padding-s;
+
+
+  &__essential {
+    display: flex;
+    flex-direction: row;
+  }
 
   &__name {
     line-height: 40px;

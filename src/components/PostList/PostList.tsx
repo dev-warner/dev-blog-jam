@@ -1,16 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { PostMeta } from '../PostMeta/PostMeta';
-import { AuthorCard } from '../AuthorCard/AuthorCard';
-import { Schema, Media } from '../../next-env';
-import { PostReferenceType } from '../../pages/post';
-import { ButtonLink } from '../Button/Button';
-import { image } from '../../services/dc-connector';
+import { Media, Schema } from "../../next-env";
+import { PostReferenceType } from "../../pages/post";
+import { ButtonLink } from "../Button/Button";
+import { PostMeta } from "../PostMeta/PostMeta";
 
-import './postList.scss';
+import "./postList.scss";
 
 export const PostList: React.SFC<PostListProps> = ({
-    posts = []
+    posts = [],
 }) => {
     return (
         <section className="post-list__container">
@@ -22,10 +20,9 @@ export const PostList: React.SFC<PostListProps> = ({
                         <PostMeta body={excert} tags={tags} author={author} />
                         <p>{excert}</p>
                         <ButtonLink
-                            prefetch={true}
                             href={`/post/${encodeURIComponent(slug)}`}
                             variant="outlined" color="primary"
-                            label='Read More'/>
+                            label="Read More"/>
                     </article>
                 );
             })}

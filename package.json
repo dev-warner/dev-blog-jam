@@ -5,7 +5,11 @@
     "dev": "next ./src",
     "build": "next build ./src",
     "start": "next start ./src",
-    "ci_build_deploy": "next build ./src && next export ./src"
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
+    "fix:tslint": "tslint --fix --project .",
+    "ci_build": "npx next build ./src && npx next export ./src",
+    "build_serve": "npx next build ./src && npx next export ./src && http-server ./src/out"
   },
   "dependencies": {},
   "devDependencies": {
@@ -18,12 +22,16 @@
     "@zeit/next-typescript": "^1.1.1",
     "dc-delivery-sdk-js": "^0.2.0",
     "next": "^9.0.0",
+    "next-manifest": "^2.0.0",
     "next-offline": "^4.0.2",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "reading-time": "^1.2.0",
     "showdown": "^1.9.0",
+    "ts-lint": "^4.5.1",
     "typescript": "^3.5.3"
   }
 }

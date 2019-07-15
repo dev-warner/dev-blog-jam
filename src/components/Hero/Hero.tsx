@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Schema } from '../../next-env';
+import * as React from "react";
+import { Schema } from "../../next-env";
 
-import './hero.scss';
+import "./hero.scss";
 
 export type HeroProps = Schema<{
     title: string;
@@ -15,7 +15,7 @@ export type HeroProps = Schema<{
 export const Hero: React.SFC<HeroProps> = ({
     title,
     subheading,
-    featuredImage = { path: '/static/images/blog/code_review.svg', alt: 'code review' }
+    featuredImage = { path: "/static/images/blog/code_review.svg", alt: "code review" },
 }) => {
     return (
         <section className="hero__container">
