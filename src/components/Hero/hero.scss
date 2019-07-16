@@ -6,6 +6,7 @@
     padding: $padding_m $padding_s;
     background-color: $dark_blue;
     color: $white;
+    transition: height 0.8s;
   }
   &__content-container {
     max-width: $content_width;

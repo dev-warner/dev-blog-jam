@@ -3,34 +3,62 @@ const withManifest = require('next-manifest');
 const withOffline = require('next-offline');
 const { ContentClient } = require('dc-delivery-sdk-js');
 
+const client = new ContentClient({ account: 'ampeng' });
+
+async function getTeamLinks(id) {
+    const data = (await client.getContentItem(id)).toJSON();
+    const { posts } = data;
+    const pages = posts.reduce((pages, { post: { id }, slug }) => {
+        const page = {
+            [`/post/${encodeURIComponent(slug)}`]: {
+                page: '/post',
+                query: { id }
+            }
+        };
+        console.log('Route created');
+        console.log(`Path: ${slug}`);
+        console.log(`Delivery: ${id}`);
+        return Object.assign(pages, page);
+    }, {});
+
+    return pages;
+}
+
+function getTeamPages(teamList) {
+    return teamList.reduce((teams, { teamName, teamSlot: { id } }) => {
+        return Object.assign(teams, {
+            [`/team/${encodeURIComponent(teamName.toLowerCase())}`]: {
+                page: '/team',
+                query: { id }
+            }
+        });
+    }, {});
+}
+
+function getBlogsFromTeams(teamList) {
+    return teamList.reduce(async (teams, { teamName, teamSlot: { id } }) => {
+        const blogs = await getTeamLinks(id);
+
+        return Object.assign(teams, { ...blogs });
+    }, {});
+}
+
 module.exports = withOffline(
     withManifest(
         withSass({
             dir: './src',
             build: './dist',
             exportPathMap: async function() {
-                const client = new ContentClient({ account: 'ampeng' });
                 const data = (await client.getContentItem(
-                    '5a62604a-610e-406d-a1e0-484eb30b6c02'
+                    '5034b8ce-8e08-4bfe-b1df-fbd600f06ff9'
                 )).toJSON();
                 const {
-                    posts,
+                    teamlist,
                     _meta: { deliveryId: id }
                 } = data;
-                const pages = posts.reduce((pages, { post: { id }, slug }) => {
-                    const page = {
-                        [`/post/${encodeURIComponent(slug)}`]: {
-                            page: '/post',
-                            query: { id }
-                        }
-                    };
-                    console.log('Route created');
-                    console.log(`Path: ${slug}`);
-                    console.log(`Delivery: ${id}`);
-                    return Object.assign(pages, page);
-                }, {});
-
-                return Object.assign({}, pages, {
+                const teamPages = getTeamPages(teamlist);
+                const pages = await getBlogsFromTeams(teamlist);
+                return Object.assign({}, pages, teamPages, {
                     '/': {
                         page: '/',
                         query: { id }

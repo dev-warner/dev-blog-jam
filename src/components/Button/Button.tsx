@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Link from "next/link";
 
 type ButtonType = {
-    href: string;
+    href?: string;
     color?: "inherit" | "primary" | "secondary" | "default";
     variant?: "text" | "outlined" | "contained";
     label: string;
@@ -16,7 +16,6 @@ export const ButtonLink: React.SFC<ButtonType> = ({
     color = "primary",
     variant = "outlined",
     label = "",
-    className,
 }) => (
     <Link href={href}>
         <Button variant={variant} color={color}>

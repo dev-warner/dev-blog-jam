@@ -1,1 +1,49 @@
 $transition-default: 1s;
+
+$animTime: 1.2s;
+$totalTime: 6s;
+$staggerTime: 0.6s;
+
+@mixin keyframes($animationName)
+{
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName}  {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin createFadeIn($i, $animTime, $totalTime, $delay) {      
+  @include keyframes(fade#{$i}) {
+    0% {              
+      opacity: 0;
+    }
+    #{($i * $delay + $animTime)/$totalTime * 100}% {     
+      opacity: 0.8;
+    }          
+    100% {
+      opacity: 1;
+    }
+  }      
+}
+
+
+@for $i from 0 through 20 {
+  @include createFadeIn($i, $animTime, $totalTime, $staggerTime); 
+  .fade:nth-child(#{($i)}) {
+    animation: fade#{($i)} $totalTime;
+  }
+}

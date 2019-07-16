@@ -2,6 +2,9 @@
 
 .navigation {
   height: '40px';
+  display: flex;
+  justify-content: space-between;
+  padding-right: 50px;
   background: $blue url('/static/images/mast-amplogo.png') no-repeat bottom right;
 
   &__brand {
@@ -12,5 +15,9 @@
     background-repeat: no-repeat;
     height: 40px;
     width: 240px;
+  }
+
+  &__select {
+    color: #fff;
   }
 }

@@ -1,22 +1,40 @@
-import * as React from "react";
-import { PostType } from "../../pages/post";
-import { image } from "../../services/dc-connector";
-import { PostMeta } from "../PostMeta/PostMeta";
+import * as React from 'react';
+import Router from 'next/router';
+import { PostType } from '../../pages/post';
+import { PostMeta } from '../PostMeta/PostMeta';
 
-import { ButtonLink } from "../Button/Button";
-import { RelatedPosts } from "../RelatedPosts/RelatedPosts";
+import { Button } from '@material-ui/core';
+import { RelatedPosts } from '../RelatedPosts/RelatedPosts';
 
-import "./postContent.scss";
+import './postContent.scss';
 
-export const PostContent: React.SFC<PostType> = ({ tags, body, authors, relatedPosts }) => {
+export const PostContent: React.SFC<PostType> = ({
+    tags,
+    body,
+    authors,
+    relatedPosts
+}) => {
     const author = authors[0];
     return (
         <>
             <section className="post__container">
                 <PostMeta tags={tags} body={body} author={author} />
-                <article dangerouslySetInnerHTML={{ __html: body }}/>
-                <ButtonLink className="post__button" href="/" label="Back"/>
-                <RelatedPosts posts={relatedPosts}/>
+                <article
+                    className="fade"
+                    dangerouslySetInnerHTML={{ __html: body }}
+                />
+
+                <Button
+                    onClick={() => Router.back()}
+                    className="post__button fade"
+                    variant="outlined"
+                    color="primary"
+                >
+                    <a rel="noopener">
+                        Back
+                    </a>
+                </Button>
+                <RelatedPosts posts={relatedPosts} />
             </section>
         </>
     );

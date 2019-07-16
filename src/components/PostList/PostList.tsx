@@ -15,9 +15,9 @@ export const PostList: React.SFC<PostListProps> = ({
             {posts.map(({ title, excert, tags, slug, author }, index) => {
 
                 return (
-                    <article className="post-list__post-item" key={index}>
+                    <article className="post-list__post-item fade" key={index}>
                         <h3>{title}</h3>
-                        <PostMeta body={excert} tags={tags} author={author} />
+                        <PostMeta body={excert} tags={tags} author={author} displayTime={false} />
                         <p>{excert}</p>
                         <ButtonLink
                             href={`/post/${encodeURIComponent(slug)}`}

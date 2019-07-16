@@ -50,6 +50,8 @@ Post.getInitialProps = async ({ query }) => {
     const path = (
         image(featuredImage.image)
             .url()
+            .width(400)
+            .height(308)
             .seoFileName(seo || alt)
             .build()
     );
