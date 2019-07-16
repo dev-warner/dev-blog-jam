@@ -46,8 +46,6 @@ function getBlogsFromTeams(teamList) {
 module.exports = withOffline(
     withManifest(
         withSass({
-            dir: './src',
-            build: './dist',
             exportPathMap: async function() {
                 const data = (await client.getContentItem(
                     '5034b8ce-8e08-4bfe-b1df-fbd600f06ff9'

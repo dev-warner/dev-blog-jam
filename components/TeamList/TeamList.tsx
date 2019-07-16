@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Link from 'next/link';
-import { ButtonLink } from '../Button/Button';
-import { Schema } from '../../next-env';
+import Link from "next/link";
+import * as React from "react";
+import { Schema } from "../../next-env";
+import { ButtonLink } from "../Button/Button";
 
-import './teamList.scss';
+import "./teamList.scss";
 
 export type TeamListType = Schema<{
     teamSlot: Schema;
@@ -16,13 +16,13 @@ export type TeamListType = Schema<{
 }>;
 
 export const TeamList: React.SFC<{ teamList: TeamListType[] }> = ({
-    teamList = []
+    teamList = [],
 }) => {
     return (
         <section className="team-list__container">
             {teamList.map(({ teamName, teamSlogan, featuredImage }, index) => {
                 const href = `/team/${encodeURIComponent(
-                    teamName.toLowerCase()
+                    teamName.toLowerCase(),
                 )}`;
                 return (
                     <Link href={href}>
@@ -30,7 +30,7 @@ export const TeamList: React.SFC<{ teamList: TeamListType[] }> = ({
                             <article className="team-list__text">
                                 <h2>{teamName}</h2>
                                 <h3>{teamSlogan}</h3>
-                                <ButtonLink href={href} label={'View Posts'} />
+                                <ButtonLink href={href} label={"View Posts"} />
                             </article>
                             <img
                                 className="team-list__image"

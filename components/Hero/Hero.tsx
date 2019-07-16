@@ -17,7 +17,7 @@ export const Hero: React.SFC<HeroProps> = ({
     title,
     subheading,
     featuredImage = { path: "/static/images/blog/code_review.svg", alt: "code review" },
-    backgroundColor
+    backgroundColor,
 }) => {
     return (
         <section className="hero__container" style={{ backgroundColor }}>

@@ -1,22 +1,31 @@
-import * as React from 'react';
-import readingTime from 'reading-time';
+import * as React from "react";
+import readingTime from "reading-time";
 
-import { image } from '../../services/dc-connector';
-import { AuthorCard } from '../AuthorCard/AuthorCard';
-import { TagList } from '../TagList/TagList';
+import { Media, Schema } from "../../next-env";
+import { image } from "../../services/dc-connector";
+import { AuthorCard } from "../AuthorCard/AuthorCard";
+import { AuthorType } from "../PostList/PostList";
+import { TagList } from "../TagList/TagList";
 
-import './postMeta.scss';
+import "./postMeta.scss";
 
-export const PostMeta = ({ tags, body, author, displayTime = true }) => {
+type PostMetaType = Schema<{
+    tags: string[];
+    body: string;
+    author: AuthorType;
+    displayTime?: boolean;
+}>;
+
+export const PostMeta: React.SFC<PostMetaType> = ({ tags, body, author, displayTime = true }) => {
     const { profilePic } = author;
 
-    const calculateReadingTime = body => {
+    const calculateReadingTime = (body: string) => {
         const { text } = readingTime(body);
 
         return text;
     };
 
-    const createProfilePicture = profilePic => {
+    const createProfilePicture = (profilePic: Media) => {
         return image(profilePic)
             .url()
             .width(40)

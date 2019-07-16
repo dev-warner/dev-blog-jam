@@ -1,12 +1,12 @@
-import Head from 'next/head';
-import * as React from 'react';
-import Manifest from 'next-manifest/manifest'
+import Manifest from "next-manifest/manifest";
+import Head from "next/head";
+import * as React from "react";
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { Header } from '../components/Header/Header';
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { Header } from "../components/Header/Header";
 
-import './default.scss';
+import "./default.scss";
 
 interface LayoutProps {
     children: JSX.Element[];
@@ -16,9 +16,9 @@ interface LayoutProps {
 
 const theme = createMuiTheme({
     palette: {
-        primary: { main: '#dd1a5b' },
-        secondary: { main: '#039be5' }
-    }
+        primary: { main: "#dd1a5b" },
+        secondary: { main: "#039be5" },
+    },
 });
 
 export default ({ children, title, description }: LayoutProps) => {
@@ -35,9 +35,9 @@ export default ({ children, title, description }: LayoutProps) => {
                     content="width=device-width, initial-scale=1"
                 />
                 <Manifest
-                    href='/static/manifest/manifest.json'
-                    themeColor='#29333f'
-                    initialScale='1'
+                    href="/static/manifest/manifest.json"
+                    themeColor="#29333f"
+                    initialScale="1"
                 />
                 <link
                     rel="icon"

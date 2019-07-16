@@ -2,11 +2,11 @@ import * as showdown from "showdown";
 import Layout from "../layouts/default";
 
 import { NextPage } from "next";
-import { Schema } from "../next-env";
 import { Hero } from "../components/Hero/Hero";
-import { client, image } from "../services/dc-connector";
 import { PostContent } from "../components/PostContent/PostContent";
 import { AuthorType, PostPreviewType } from "../components/PostList/PostList";
+import { Schema } from "../next-env";
+import { client, image } from "../services/dc-connector";
 
 export type PostType = Schema<{
     title: string;

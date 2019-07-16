@@ -3,9 +3,9 @@ import Layout from "../layouts/default";
 import { ImageFormat } from "dc-delivery-sdk-js";
 import { NextPage } from "next";
 import { Hero, HeroProps } from "../components/Hero/Hero";
+import { TeamList, TeamListType } from "../components/TeamList/TeamList";
 import { Schema } from "../next-env";
 import { client, image } from "../services/dc-connector";
-import { TeamListType, TeamList } from "../components/TeamList/TeamList";
 
 type TeamProps = Schema<{
   hero: HeroProps
@@ -28,7 +28,7 @@ Home.getInitialProps = async ({ query }) => {
     const { teamlist = [], hero } = (await client.getContentItem(id as string)).toJSON();
     const { alt, seo } = hero.featuredImage;
 
-    const pathCreate = img => (
+    const pathCreate = (img) => (
       image(img)
         .url()
         .seoFileName(seo || alt)
@@ -42,16 +42,16 @@ Home.getInitialProps = async ({ query }) => {
         alt,
       },
     });
-    
-    teamlist.forEach(team => {
+
+    teamlist.forEach((team) => {
       const { alt: teamAlt } = team.featuredImage;
       Object.assign(team, {
         featuredImage: {
           path: pathCreate(team.featuredImage.image),
           alt: teamAlt,
         },
-      })
-    })
+      });
+    });
 
     return { teamList: teamlist, hero } as TeamProps;
 };

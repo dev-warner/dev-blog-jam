@@ -2,14 +2,13 @@
   "version": "0.0.0",
   "name": "dev-blog-jam",
   "scripts": {
-    "dev": "next ./src",
-    "build": "next build ./src",
-    "start": "next start ./src",
+    "dev": "npx next",
+    "build": "npx next build",
+    "start": "npx next start",
     "fix": "run-s fix:*",
-    "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
-    "ci_build": "npx next build ./src && npx next export ./src",
-    "build_serve": "npx next build ./src && npx next export ./src && http-server ./src/out"
+    "ci_build": "npx next build && npx next export",
+    "build_serve": "npx next build && npx next export && http-server ./out"
   },
   "dependencies": {},
   "devDependencies": {

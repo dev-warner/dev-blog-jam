@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Router from 'next/router';
-import { PostType } from '../../pages/post';
-import { PostMeta } from '../PostMeta/PostMeta';
+import Router from "next/router";
+import * as React from "react";
+import { PostType } from "../../pages/post";
+import { PostMeta } from "../PostMeta/PostMeta";
 
-import { Button } from '@material-ui/core';
-import { RelatedPosts } from '../RelatedPosts/RelatedPosts';
+import { Button } from "@material-ui/core";
+import { RelatedPosts } from "../RelatedPosts/RelatedPosts";
 
-import './postContent.scss';
+import "./postContent.scss";
 
 export const PostContent: React.SFC<PostType> = ({
     tags,
     body,
     authors,
-    relatedPosts
+    relatedPosts,
 }) => {
     const author = authors[0];
     return (
