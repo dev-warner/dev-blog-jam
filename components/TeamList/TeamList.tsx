@@ -24,7 +24,7 @@ export const TeamList: React.SFC<{ teamList: TeamListType[] }> = ({
                     teamName.toLowerCase()
                 )}`;
                 return (
-                    <a className="team-list__item fade" href={href} key={index}>
+                    <div className="team-list__item fade" key={index}>
                         <article className="team-list__text">
                             <h2>{teamName}</h2>
                             <h3>{teamSlogan}</h3>
@@ -35,7 +35,7 @@ export const TeamList: React.SFC<{ teamList: TeamListType[] }> = ({
                             src={featuredImage.path}
                             alt={featuredImage.alt}
                         />
-                    </a>
+                    </div>
                 );
             })}
         </section>
