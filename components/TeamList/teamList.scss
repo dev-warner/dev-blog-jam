@@ -12,6 +12,7 @@
   &__item {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
     flex-direction: column;
     width: 100%;
     padding: $padding_m $padding_s;

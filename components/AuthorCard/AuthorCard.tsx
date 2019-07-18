@@ -1,6 +1,8 @@
 import Avatar from '@material-ui/core/Avatar';
 import * as React from 'react';
 
+import Link from 'next/link';
+
 import './authorCard.scss';
 
 export const AuthorCard = ({ name, image, info, twitter }: any) => {
