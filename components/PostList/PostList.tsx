@@ -17,7 +17,7 @@ export const PostList: React.SFC<PostListProps> = ({
                 return (
                     <article className="post-list__post-item fade" key={index}>
                         <h3>{title}</h3>
-                        <PostMeta body={excert} tags={tags} author={author} displayTime={false} />
+                        <PostMeta body={excert} tags={tags as string[]} author={author} displayTime={false} />
                         <p>{excert}</p>
                         <ButtonLink
                             href={`/post/${encodeURIComponent(slug)}`}

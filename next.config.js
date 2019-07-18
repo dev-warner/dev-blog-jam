@@ -47,15 +47,17 @@ module.exports = withOffline(
     withManifest(
         withSass({
             exportPathMap: async function() {
-                const data = (await client.getContentItem(
-                    '5034b8ce-8e08-4bfe-b1df-fbd600f06ff9'
-                )).toJSON();
+                const referenceId = '5034b8ce-8e08-4bfe-b1df-fbd600f06ff9';
+                const data = (await client.getContentItem(referenceId)).toJSON();
+
                 const {
                     teamlist,
                     _meta: { deliveryId: id }
                 } = data;
+
                 const teamPages = getTeamPages(teamlist);
                 const pages = await getBlogsFromTeams(teamlist);
+
                 return Object.assign({}, pages, teamPages, {
                     '/': {
                         page: '/',

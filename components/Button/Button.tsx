@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import Button from "@material-ui/core/Button";
-import Link from "next/link";
 
 type ButtonType = {
     href?: string;
@@ -17,9 +16,7 @@ export const ButtonLink: React.SFC<ButtonType> = ({
     variant = "outlined",
     label = "",
 }) => (
-    <Link href={href}>
-        <Button variant={variant} color={color}>
-            <a rel="noopener">{label}</a>
-        </Button>
-    </Link>
+    <Button variant={variant} color={color}>
+        <a rel="noopener" href={href}>{label}</a>
+    </Button>
 );
