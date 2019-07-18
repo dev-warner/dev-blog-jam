@@ -12,6 +12,7 @@
   &__item {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     width: 100%;
     padding: $padding_m $padding_s;
     border-bottom: 1px $grey solid;
@@ -19,6 +20,21 @@
   }
 
   &__image {
-    max-width: 45%;
+    max-width: 100%;
+    margin: $padding_m 0;
+  }
+
+
+  @media (min-width: $tablet) {
+
+    &__item {
+      flex-direction: row;
+    }
+
+    &__image {
+      max-width: 55%;
+      margin: 0;
+    }
+
   }
 }

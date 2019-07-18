@@ -11,7 +11,7 @@ import "./default.scss";
 interface LayoutProps {
     children: JSX.Element[];
     title: string;
-    description: string;
+    description?: string;
 }
 
 const theme = createMuiTheme({
@@ -21,7 +21,7 @@ const theme = createMuiTheme({
     },
 });
 
-export default ({ children, title, description }: LayoutProps) => {
+export default ({ children, title, description = 'Amplience Development Blog' }: LayoutProps) => {
     return (
         <>
             <Head>
